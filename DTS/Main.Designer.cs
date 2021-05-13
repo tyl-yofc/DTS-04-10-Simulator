@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.通道管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_AddChannel = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_ChannelInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_AlarmZone = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_ParaSet = new System.Windows.Forms.ToolStripMenuItem();
             this.通道管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报警分区ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,15 +45,14 @@
             this.Bt_Start = new DevComponents.DotNetBar.ButtonX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.ipAddressInput = new DevComponents.Editors.IpAddressInput();
             this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.cmb_ServerIP = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -76,43 +71,10 @@
             // 
             // 通道管理ToolStripMenuItem1
             // 
-            this.通道管理ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_AddChannel,
-            this.Menu_ChannelInfo,
-            this.Menu_AlarmZone,
-            this.Menu_ParaSet});
             this.通道管理ToolStripMenuItem1.Name = "通道管理ToolStripMenuItem1";
             this.通道管理ToolStripMenuItem1.Size = new System.Drawing.Size(68, 21);
             this.通道管理ToolStripMenuItem1.Text = "设备管理";
             this.通道管理ToolStripMenuItem1.Click += new System.EventHandler(this.Menu_EquipMange_Click);
-            // 
-            // Menu_AddChannel
-            // 
-            this.Menu_AddChannel.Name = "Menu_AddChannel";
-            this.Menu_AddChannel.Size = new System.Drawing.Size(124, 22);
-            this.Menu_AddChannel.Text = "添加设备";
-            this.Menu_AddChannel.Click += new System.EventHandler(this.Menu_EquipMange_Click);
-            // 
-            // Menu_ChannelInfo
-            // 
-            this.Menu_ChannelInfo.Name = "Menu_ChannelInfo";
-            this.Menu_ChannelInfo.Size = new System.Drawing.Size(124, 22);
-            this.Menu_ChannelInfo.Text = "通道管理";
-            this.Menu_ChannelInfo.Click += new System.EventHandler(this.Menu_ChannelInfo_Click);
-            // 
-            // Menu_AlarmZone
-            // 
-            this.Menu_AlarmZone.Name = "Menu_AlarmZone";
-            this.Menu_AlarmZone.Size = new System.Drawing.Size(124, 22);
-            this.Menu_AlarmZone.Text = "报警分区";
-            this.Menu_AlarmZone.Click += new System.EventHandler(this.Menu_AlarmZone_Click);
-            // 
-            // Menu_ParaSet
-            // 
-            this.Menu_ParaSet.Name = "Menu_ParaSet";
-            this.Menu_ParaSet.Size = new System.Drawing.Size(124, 22);
-            this.Menu_ParaSet.Text = "参数设置";
-            this.Menu_ParaSet.Click += new System.EventHandler(this.Menu_ParaSet_Click);
             // 
             // 通道管理ToolStripMenuItem
             // 
@@ -208,13 +170,13 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cmb_ServerIP);
             this.groupPanel1.Controls.Add(this.cmb_chooseEquip);
             this.groupPanel1.Controls.Add(this.labelX_Time);
             this.groupPanel1.Controls.Add(this.labelX6);
             this.groupPanel1.Controls.Add(this.Bt_Start);
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.labelX1);
-            this.groupPanel1.Controls.Add(this.ipAddressInput);
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupPanel1.Location = new System.Drawing.Point(0, 25);
             this.groupPanel1.Name = "groupPanel1";
@@ -253,6 +215,7 @@
             // 
             this.cmb_chooseEquip.DisplayMember = "Text";
             this.cmb_chooseEquip.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_chooseEquip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_chooseEquip.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmb_chooseEquip.FormattingEnabled = true;
             this.cmb_chooseEquip.ItemHeight = 17;
@@ -337,25 +300,6 @@
             this.labelX1.Text = "IP 地址";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // ipAddressInput
-            // 
-            this.ipAddressInput.AllowEmptyState = false;
-            this.ipAddressInput.AutoOverwrite = true;
-            // 
-            // 
-            // 
-            this.ipAddressInput.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.ipAddressInput.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ipAddressInput.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.ipAddressInput.Enabled = false;
-            this.ipAddressInput.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.ipAddressInput.Location = new System.Drawing.Point(66, 6);
-            this.ipAddressInput.Name = "ipAddressInput";
-            this.ipAddressInput.Size = new System.Drawing.Size(142, 21);
-            this.ipAddressInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ipAddressInput.TabIndex = 0;
-            this.ipAddressInput.WatermarkEnabled = false;
-            // 
             // tabItem2
             // 
             this.tabItem2.AttachedControl = this.tabControlPanel1;
@@ -366,6 +310,20 @@
             // 
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // cmb_ServerIP
+            // 
+            this.cmb_ServerIP.DisplayMember = "Text";
+            this.cmb_ServerIP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_ServerIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_ServerIP.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_ServerIP.FormattingEnabled = true;
+            this.cmb_ServerIP.ItemHeight = 17;
+            this.cmb_ServerIP.Location = new System.Drawing.Point(71, 5);
+            this.cmb_ServerIP.Name = "cmb_ServerIP";
+            this.cmb_ServerIP.Size = new System.Drawing.Size(148, 23);
+            this.cmb_ServerIP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmb_ServerIP.TabIndex = 26;
             // 
             // Main
             // 
@@ -387,7 +345,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,23 +358,19 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.Editors.IpAddressInput ipAddressInput;
         private DevComponents.DotNetBar.TabControl tabControl;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
         private DevComponents.DotNetBar.TabItem tabItem1;
         private DevComponents.DotNetBar.TabItem tabItem2;
-        private System.Windows.Forms.ToolStripMenuItem Menu_AddChannel;
-        private System.Windows.Forms.ToolStripMenuItem Menu_ParaSet;
-        private System.Windows.Forms.ToolStripMenuItem Menu_AlarmZone;
         private DevComponents.DotNetBar.ButtonX Bt_Start;
         private DevComponents.DotNetBar.LabelX labelX_Time;
         private DevComponents.DotNetBar.LabelX labelX6;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ToolStripMenuItem Menu_ChannelInfo;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmb_chooseEquip;
         private System.Windows.Forms.ToolStripMenuItem 通道管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报警分区ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmb_ServerIP;
     }
 }
 

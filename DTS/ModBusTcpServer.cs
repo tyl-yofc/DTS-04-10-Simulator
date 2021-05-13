@@ -46,6 +46,11 @@ namespace DTS
             connectsuccessflag = false;
         }
 
+        public void Init(string ip)
+        {
+            this._ip = ip;
+        }
+
         /// <summary>
         /// 启动服务
         /// </summary>

@@ -20,7 +20,8 @@ namespace DTS.CreateData
         {
             DTS = Main.Equips;
             foreach (KeyValuePair<string, DTSEquip> kvp in DTS)
-            {                
+            {
+                kvp.Value.tcpServer.Init(Main.ServerIP);
                 kvp.Value.tcpServer.equipnum = kvp.Key;
                 kvp.Value.tcpServer.Start();
                 kvp.Value.Start();

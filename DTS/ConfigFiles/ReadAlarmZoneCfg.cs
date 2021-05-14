@@ -122,12 +122,26 @@ namespace DTS.ConfigFiles
                                         }
                                     }
                                 }
-                                if(!ci.ZoneTempInfos.Contains(zti))
+                                int count = fileEquipChannelZoness[equipnum].Count;
+                                ChannelInfos fileci = fileEquipChannelZoness[equipnum].Find(delegate (ChannelInfos c) { return c.ChannelNum == ci.ChannelNum; });
+                                int index = -1;
+                                index = fileEquipChannelZoness[equipnum].FindIndex(item => item.ChannelNum == ci.ChannelNum);
+                                if (index == -1)
                                 {
-                                    ci.ZoneTempInfos.Add(zti);
-                                }                                
-                                if (!fileEquipChannelZoness[equipnum].Contains(ci))
-                                    fileEquipChannelZoness[equipnum].Add(ci);
+                                    fileci = ci;
+                                    index = 0;
+                                }
+                                if (fileci.ZoneTempInfos == null)
+                                    fileci.ZoneTempInfos = new List<ZoneTempInfo>();
+                                ZoneTempInfo zt = fileci.ZoneTempInfos.Find(delegate (ZoneTempInfo z) { return z.ZoneNumber == zti.ZoneNumber; });
+                                int index1 = -1;
+                                index1 = fileci.ZoneTempInfos.FindIndex(item => item.ZoneNumber == zti.ZoneNumber);
+                                if (index1 == -1)
+                                {
+                                    fileci.ZoneTempInfos.Add(zti);
+                                }
+                                if (index == 0)
+                                    fileEquipChannelZoness[equipnum].Add(fileci);
                             }
                         }
                     }
@@ -140,11 +154,23 @@ namespace DTS.ConfigFiles
                         for (int i = 0; i < channelcount; i++)
                         {
                             int zonecount = kvp.Value.channelInfo[i].ZoneCount;
-                            float interval = (float)Math.Round(kvp.Value.channelInfo[i].FiberLen / kvp.Value.SampleInterval, 2);
+                           // float interval = (float)Math.Round(kvp.Value.channelInfo[i].FiberLen / zonecount, 2);
+                            float interval = (int)(kvp.Value.channelInfo[i].FiberLen / zonecount);
                             if (fileEquipChannelZoness.Keys.Contains(kvp.Key))
                             {
                                 ChannelInfos ci = fileEquipChannelZoness[kvp.Key].Find(delegate (ChannelInfos c) { return c.ChannelNum == kvp.Value.channelInfo[i].ChannelNum; });
+                                bool flag = false;
                                 if (ci != null && zonecount == ci.ZoneTempInfos.Count)
+                                {
+                                    int zc = ci.ZoneTempInfos.Count;
+                                    if (zc == kvp.Value.channelInfo[i].ZoneCount)
+                                    {
+                                        if (Math.Abs(ci.ZoneTempInfos[zc - 1].StopPos - kvp.Value.channelInfo[i].FiberLen) < 0.001)
+                                            flag = true;
+                                    }
+                                    //  kvp.Value.channelInfo[i].ZoneTempInfos = new List<ZoneTempInfo>(ci.ZoneTempInfos);
+                                }
+                                if (flag)
                                 {
                                     kvp.Value.channelInfo[i].ZoneTempInfos = new List<ZoneTempInfo>(ci.ZoneTempInfos);
                                 }
@@ -176,7 +202,7 @@ namespace DTS.ConfigFiles
                                         zti.Add(zone);
                                     }
                                     kvp.Value.channelInfo[i].ZoneTempInfos = new List<ZoneTempInfo>(zti);
-                                }
+                                }                               
                             }
                             else
                             {
@@ -218,9 +244,10 @@ namespace DTS.ConfigFiles
                     int channelcount = kvp.Value.ChannelCount;
                     
                     for (int i=0;i<channelcount;i++)
-                    {
-                        float interval = (float)Math.Round(kvp.Value.channelInfo[i].FiberLen / kvp.Value.SampleInterval, 2);
+                    {                        
                         int zonecount = kvp.Value.channelInfo[i].ZoneCount;
+                     //   float interval = (float)Math.Round(kvp.Value.channelInfo[i].FiberLen / zonecount, 2);
+                        float interval = (int)(kvp.Value.channelInfo[i].FiberLen / zonecount);
                         List<ZoneTempInfo> zti = new List<ZoneTempInfo>();
                         for (int j=0;j<zonecount;j++)
                         {

@@ -49,7 +49,6 @@ E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\bin\Release\DTS.pd
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\bin\Release\DevComponents.DotNetBar2.dll
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\bin\Release\Newtonsoft.Json.dll
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\bin\Release\ZedGraph.dll
-E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\obj\x86\Release\DTS_MobusTcpServer.csprojResolveAssemblyReference.cache
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\obj\x86\Release\DTS.EquipMange.resources
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\obj\x86\Release\DTS.ChannelMange.resources
 E:\模拟器\DTS-04-10模拟器最新版\Simulator_12\DTS\DTS\obj\x86\Release\DTS.AlarmZoneMange.resources

@@ -329,8 +329,10 @@ namespace DTS.CreateData
                 if (channelZoneInfos[i].ConsTempFlag || channelZoneInfos[i].TempRiseFlag || channelZoneInfos[i].RegionTempDifFlag)                                  
                     temp.TempAlarmStatus = 1;
 
-                int startind = (int)(temp.StartPos / ((channelInfo.SampleInterval) / 100.0));
-                int stopind = (int)(temp.StopPos / ((channelInfo.SampleInterval) / 100.0)) ;
+             //   int startind = (int)(temp.StartPos / ((channelInfo.SampleInterval) / 100.0));
+            //    int stopind = (int)(temp.StopPos / ((channelInfo.SampleInterval) / 100.0)) ;
+                int startind = (int)(temp.StartPos / channelInfo.ZoneCount);
+                int stopind = (int)(temp.StopPos / channelInfo.ZoneCount);
                 double higestTemp = channelInfo.TempDatas[startind];
                 double lowestTemp = channelInfo.TempDatas[startind];
                 int higestTempInd = startind;
